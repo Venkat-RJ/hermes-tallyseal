@@ -1,0 +1,23 @@
+name: tallyseal
+version: "0.1.0"
+description: Reconcile CSV summaries against a pinned source and release the exact bytes that pass.
+requires_hermes: ">=0.23.1"
+provides_tools:
+  - tallyseal_check
+config_schema:
+  root:
+    type: str
+    label: Job folder
+    description: Absolute path to a trusted local folder containing source.csv and report.csv.
+  source_sha256:
+    type: str
+    label: Trusted source SHA-256
+    description: SHA-256 of source.csv, set by the operator before the agent starts.
+  group_by:
+    type: list
+    label: Group columns
+    description: One to four exact column names shared by source and report.
+  amount_column:
+    type: str
+    label: Source amount column
+    description: Source column containing signed integer minor units, such as cents.
